@@ -1,16 +1,24 @@
-import React from 'react';
-import {SheetProvider} from 'react-native-actions-sheet';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import React, {useState} from 'react';
 import Sheet from './src/Sheet';
 
-
 function App(): React.JSX.Element {
+  const [visible, setVisible] = useState(true);
+  const [animationType, setAnimationType] = useState<'slide' | 'fade' | 'none'>(
+    'slide',
+  );
+
+  const renderSheetContent = () => {
+    return (<></>)
+  };
+
   return (
-    <SafeAreaProvider>
-    <SheetProvider>
-     <Sheet />
-    </SheetProvider>
-    </SafeAreaProvider>
+    <Sheet
+      showCloseIcon={true}
+      visible={visible}
+      setVisible={setVisible}
+      animationType={animationType}>
+      {renderSheetContent()}
+    </Sheet>
   );
 }
 

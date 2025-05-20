@@ -3,11 +3,11 @@ import {StyleSheet, TouchableOpacity, View, Text, Image} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { closeIcon } from './images';
 
-const SheetHeader = ({title, hideClose = false, style,onPress}) => {
+const SheetHeader = ({title, showCloseIcon = true, style,onPress}) => {
   return (
     <View style={[styles.modalHeader, style]}>
       <Text style={[styles.modalTitle]}>{title}</Text>
-      {!hideClose && (
+      {showCloseIcon && (
           <TouchableOpacity
             onPress={onPress}
             style={styles.closeIconContainer}>
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width:'100%'
+    width:'100%',
   },
   modalTitle: {
     fontSize: 18,
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
   closeIconContainer:{
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    marginVertical: hp(1),
     backgroundColor: '#ffffff',
     alignSelf: 'center',
     width: wp(8),
